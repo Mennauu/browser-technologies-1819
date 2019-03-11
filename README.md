@@ -1,6 +1,6 @@
 <h1 align="center">Browser Technologies @cmda-minor-web 1819</h1>
 
-<p align="center"><b>[Description]</a>.</b>
+<p align="center"><b>Een demo op basis van [een use case]. Zorg dat alle gebruikers, met alle browsers, in iedere context minimaal de core functionaliteit te zien/horen/voelen krijgen.</a>.</b>
 </p>
 
 <br>
@@ -77,8 +77,40 @@ git clone https://github.com/Mennauu/web-app-from-scratch-18-19
 ```
 4. Load any [live server](https://www.npmjs.com/package/live-server) and serve index.html
 
-<!-- ...but how does one use this project? What are its features 🤔 -->
-## Interactions
+## Feature research
+The goal is to research at least two features that are being used on websites and figure out what impact these features have on sites I, and you, know and use normally.
+
+### JavaScript
+Websites without JavaScript.
+
+#### Problems
+The biggest problem right now is that most modern websites use JavaScript as of today (11-03-2019). Websites are build in JavaScript frameworks, like react or vue. When this is the case, disabling JavaScript means that literally nothing is being shown; sometimes only an error message displaying "Enable JavaScript to use this website".
+
+There is a portion of people that deliberately turned off JavaScript: [0.2% of pageviews from worldwide traffic across all devices in the fourt quarter 2016 had JavaScript disabled.](https://blockmetry.com/blog/javascript-disabled). When your website relies on JavaScript, this portion won't be able to use your website. 
+
+JavaScript requires a stable internet connection to load properly. If your user has a poor internet connection, your website might take too long to load, making the user retreat from your website.
+
+#### How to achieve
+In all browsers you can turn off JavaScript in the browser settings. You can follow the steps, for your specific browser, on this page: [WikiHow: Disable JavaScript](https://www.wikihow.com/Disable-JavaScript) to turn off JavaScript.
+
+#### Examples
+The first website I wanted to try without JavaScript is a site I created myself: abc-legal.com. Turns out, the website works loads extremely fast without JavaScript and looks nearly identical. The two things that don't work are slideshows and the ability to change from language. We could solve those problems by showing a static image for the slideshow, and hard-linking the different languages options (these are being loaded dynamically by JavaScript, right now).
+
+The second website I went to was ark.io. I know this website is made using Vue.JS, and guess what, nothing loads! You are left with a blank page. They don't even provide you with an error message.
+
+The last website I decided to visit was smashingmagazine.com, because Vitaly (our previous teacher) was part of making it, and is all for using CSS over JavaScript - and is hyped about a great User Experience, for all users. Damn, this website is really, really good without JavaScript. Functionalities that need JavaScript to work are not being shown. The search bar is replaced with a Smashing Magazine Google Search - so you can still use the search functionality, without JavaScript. The only downside I could find is that images from the authors are not loaded. They are loaded through JavaScript.
+
+### Broadband
+Load websites by simulating a slow 3G network connection.
+
+#### Problems
+If the functionality from your website takes to long to load on a slow network connection, the user will retreat from your website.
+
+#### How to achieve
+You can achieve a slow network connection by opening your console and navigating to "Network". Once there you can click on "Online" with the arrow pointing down, and choose a preset, like 3G slow.
+
+#### Examples
+Once again I was very curious how fast smashingmagazine.com would load on a slow 3G network connection. It took 9 seconds to load everything, which is very fast! However, it loads everything at the same time, as if the entire page is loaded asynchronous. It could only show HTML first, and afterwards load CSS.
 
 <!-- What external data source is featured in your project and what are its properties 🌠 -->
 ## Data
