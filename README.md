@@ -7,15 +7,15 @@
 
 <p align="center">
   <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week1">
-    <img src="https://img.shields.io/badge/week-1-brightred.svg?style=flat-square" alt="week1">
+    <img src="https://img.shields.io/badge/week-1-green.svg?style=flat-square" alt="week1">
   </a>
   &nbsp;&nbsp;&nbsp;
   <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week2">
-    <img src="https://img.shields.io/badge/week-2-brightred.svg?style=flat-square" alt="week2">
+    <img src="https://img.shields.io/badge/week-2-red.svg?style=flat-square" alt="week2">
   </a>
   &nbsp;&nbsp;&nbsp;
   <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week3">
-    <img src="https://img.shields.io/badge/week-3-brightred.svg?style=flat-square" alt="week3">
+    <img src="https://img.shields.io/badge/week-3-red.svg?style=flat-square" alt="week3">
   </a>
   &nbsp;&nbsp;&nbsp;
   <a href="https://github.com/Mennauu/web-app-from-scratch-18-19/blob/master/LICENSE">
@@ -31,7 +31,7 @@
 
 <!-- ☝️ replace this description with a description of your own work -->
 ## Introduction
-[ Description ]
+[ ...Description... ]
 
 Some resources possess an emoticon to help you understand which type of content you may find:
 
@@ -39,29 +39,31 @@ Some resources possess an emoticon to help you understand which type of content 
 - 🛠: Tool or library
 - 📹: Video
 
-You can find a live demo right here: 
-
 <!-- Maybe a table of contents here? 📚 -->
 ## Table of Contents
 
 - [Installation](#installation)
-- [Interactions](#interactions)
-- [Data](#data)
-  - [Authentication and limit](#authentication-and-limit)
-  - [Featured data](#featured-data)
-  - [Retrieve](#retrieve)
-  - [Cache](#cache)
-- [Code structure](#code-structure)
-  - [Actor diagram](#authentication-and-limit)
-  - [Interaction diagram](#authentication-and-limit)
+- [Feature research](#feature-research)
+  - [JavaScript](#javascript)
+    - [Problems](#problems)
+    - [How to achieve](#how-to-achieve)
+    - [Examples](#examples)
+  - [Broadband](#broadband)
+    - [Problems](#problems)
+    - [How to achieve](#how-to-achieve)
+    - [Examples](#examples)
+- [Implementations](#implementations)
+  - [Turn off images](#turn-off-images)
+  - [Disable custom fonts](#disable-custom-fonts)
+  - [Disable JavaScript](#disable-javascript)
+  - [Turn off colors](#turn-off-colors)
+  - [Turn off broadband internet](#turn-off-broadband-internet)
+  - [Cookies](#cookies)
+  - [LocalStorage doesn't work](#localstorage-doesnt-work)
+  - [Mouse and trackpad don't work](#mouse-and-trackpad-dont-work)
 - [Checklist](#checklist)
 - [Credits](#credits)
 - [Sources](#sources)
-  - [API](#api)
-  - [Router](#router)
-  - [Async and await](#async-and-await)
-  - [General JavaScript](#general-javascript)
-  - [Diagrams](#diagrams)
 - [License](#license)
 
 <!-- How about a section that describes how to install this project? 🤓 -->
@@ -75,7 +77,7 @@ cd /~path
 ```bash
 git clone https://github.com/Mennauu/web-app-from-scratch-18-19
 ```
-4. Load any [live server](https://www.npmjs.com/package/live-server) and serve index.html
+4. 
 
 ## Feature research
 The goal is to research at least two features that are being used on websites and figure out what impact these features have on sites I, and you, know and use normally.
@@ -112,29 +114,42 @@ You can achieve a slow network connection by opening your console and navigating
 #### Examples
 Once again I was very curious how fast smashingmagazine.com would load on a slow 3G network connection. It took 9 seconds to load everything, which is very fast! However, it loads everything at the same time, as if the entire page is loaded asynchronous. It could only show HTML first, and afterwards load CSS.
 
-<!-- What external data source is featured in your project and what are its properties 🌠 -->
-## Data
+## Implementations
 
-### Featured data
+### Turn off images
+The alt text from the images on the homepage could be removed.
 
-### Retrieve
+- [ ] Also implement a placeholder on the subject page and detail page for images
 
-## Code structure
-I created two diagrams to show the actors of my code (actor diagram), whom handle functionality in my app, and what happens in my code (interaction diagram).
+### Disable custom fonts
+If custom fonts are disabled calibri is used
 
-> * 🛠 [Draw](https://draw.io)
+### Disable JavaScript
+No difference
 
-### Actor diagram
-![Actor diagram](assets/actor-diagram.png)
+### Turn off colors
+No difference
 
-### Interaction diagram
-![Interaction diagram](assets/interaction-diagram.png)
+### Turn off broadband internet
+Website is optimized to work with a bad internet connection
+
+- [ ] Only change the etag of html files if there is actually a change in the html
+
+### Cookies
+We do not use cookies, yet
+
+### LocalStorage doesn't work
+LocalStorage is not used
+
+### Mouse and trackpad don't work
+You can tab through the website completely (and easily)
+
+- [ ] Add a back button, or breadcrumbs
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
 ## Checklist
 - [x] Filled
 - [ ] Empty
-
 
 <!-- Maybe someone helped me 🤔-->
 ## Credits
@@ -145,4 +160,4 @@ Underneath you will find all the sources that were previously mentioned througho
 
 <!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
 ## License 
-See the [LICENSE file](https://github.com/Mennauu/web-app-from-scratch-18-19/blob/master/LICENSE) for license rights and limitations (MIT).
+See the [LICENSE file](https://github.com/Mennauu/browser-technologies-1819/blob/master/LICENSE) for license rights and limitations (MIT).
