@@ -1,6 +1,6 @@
 <h1 align="center">Browser Technologies @cmda-minor-web 1819</h1>
 
-<p align="center"><b>Een demo op basis van [een use case]. Zorg dat alle gebruikers, met alle browsers, in iedere context minimaal de core functionaliteit te zien/horen/voelen krijgen.</a>.</b>
+<p align="center"><b>Een demo op basis van de use case: Ik wil kunnen beatboxen; met als doel dat alle gebruikers, met alle browsers, in iedere context minimaal de core functionaliteit te zien/horen/voelen krijgen.</a>.</b>
 </p>
 
 <br>
