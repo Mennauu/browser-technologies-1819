@@ -16,6 +16,7 @@
   --gray-light: #fafbfc;
   --green: #2ecc71;
   --orange: #f5a623;
+  --orange-dark: #dc951f;
   --purple: #eaedfb;
   --red: #e74c3c;
   --white: #fff;
@@ -111,7 +112,7 @@ h1, h2, h3, h4, h5, h6 {
   max-width: 768px;
 }
 
-h1 {font-size: calc(28px + (72 - 28) * ((100vw - 300px) / (1600 - 300)));}
+h1 {font-size: calc(28px + (70 - 28) * ((100vw - 300px) / (1600 - 300)));}
 h2 {font-size: calc(28px + (48 - 28) * ((100vw - 300px) / (1600 - 300)));}
 
 p {
@@ -141,6 +142,7 @@ span {display: block;}
 *********************************/
 
 /** 5.1 Header ******************/
+header[role="banner"] { padding: 3em 1em 6em 1em;}
 header[role="banner"] h1 {
   margin: 0 auto .5em auto;
 }
@@ -157,6 +159,20 @@ header[role="banner"] h1 {
   color: var(--black);
 }
 
+.active-link {
+  color: var(--orange);
+}
+
+.active-link:hover {
+  text-decoration: none;
+}
+
+.retro-player {
+  max-width: 15em;
+  padding-bottom: 4em;
+  display: block;
+  margin: 0 auto;
+}
 /** 5.2 buttons *****************/
 
 .button {
@@ -166,6 +182,12 @@ header[role="banner"] h1 {
   border-radius: 500px;
   background-color: var(--orange);
   padding: 1em 2em;
+}
+
+.button:hover {
+  color: var(--white);
+  background-color: var(--orange-dark);
+  text-decoration: none;
 }
 
 /** 5.3 Noscript samples ********/
@@ -182,7 +204,7 @@ header[role="banner"] h1 {
   background-color: var(--gray-light);
   border-radius: var(--border-radius);
   position: relative;
-  flex-grow: 1;
+  flex: 1;
   text-align: left;
 }
 
