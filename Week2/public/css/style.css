@@ -1,0 +1,354 @@
+/********************************
+  2. Custom properties          
+*********************************/
+:root {
+  /* colors */
+  --black: #212529;
+  --blue: #2c3e50;
+  --brown: #a0522d;
+  --gray: #bebebe;
+  --gray-dark: #443f45;
+  --gray-light: #fafbfc;
+  --gray-extreme: #8d8d8d;
+  --green: #2ecc71;
+  --orange: #f5a623;
+  --orange-dark: #dc951f;
+  --purple: #eaedfb;
+  --red: #e74c3c;
+  --white: #fff;
+ /* Fonts */
+ --font-nt-sans: "Nunito Sans", sans-serif;
+ /* Styles */
+ --border-radius: 5px;
+}
+
+/********************************
+  3. Base          
+*********************************/
+*,
+*::before,
+*::after {box-sizing: border-box;}
+
+html {font-size: 16px;}
+
+body {
+  font-family: var(--font-nt-sans);
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--black);
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  border-radius: var(--border-radius);
+}
+
+noscript {display: block;}
+
+section, 
+header {
+  padding: 6em 1em;
+  text-align: center;
+}
+
+main > div {padding: 6em 1em;}
+
+section,
+main > div {
+  background: var(--purple);
+}
+
+section[role="heading"] {
+  background: var(--white);
+}
+
+section[role="heading"]:first-of-type {
+  background: var(--gray-light);
+}
+
+fieldset {
+  border-radius: var(--border-radius);
+  border: 2px rgba(141, 141, 141, 0.3) solid;
+}
+
+fieldset:first-of-type {
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
+
+legend {
+  color: rgba(141, 141, 141, 0.6);
+}
+
+label {
+  margin-bottom: .5em;
+}
+
+input, select {
+  display: block;
+  width: 100%;
+  padding: .5rem .75rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #464a4c;
+  background-color: #CACACA;
+  background-image: none;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: .25rem;
+  margin-bottom: 1em;
+  min-width: 200px;
+}
+
+button {
+  font-family: var(--font-nt-sans);
+  font-size: 1rem;
+}
+
+form {
+  float: left;
+}
+/** 2.1 Nav ******************/
+nav {
+  padding: 1em;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li:first-child {
+  margin-right: auto!important;
+}
+
+nav ul li a {
+  padding: 0 1.5em;
+}
+
+nav ul li:first-child a {
+  padding: 0;
+}
+
+nav ul li:last-child a {
+  padding: 0 0 0 1em;
+}
+
+/********************************
+  4. Typography          
+*********************************/
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-nt-sans);
+  font-weight: 800;
+  margin: 0 auto 1em auto;
+  line-height: 1.3em;
+  color: var(--black);
+  max-width: 768px;
+}
+
+h1 {font-size: calc(28px + (70 - 28) * ((100vw - 300px) / (1600 - 300)));}
+h2 {font-size: calc(28px + (48 - 28) * ((100vw - 300px) / (1600 - 300)));}
+
+p {
+  margin: 0 auto 1em auto;
+  font-size: calc(16px + (24 - 16) * ((100vw - 300px) / (1600 - 300)));
+  line-height: 1.47;
+  color: var(--black);
+  max-width: 768px;
+}
+
+a {
+  color: var(--black);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--orange);
+  text-decoration: underline;
+}
+
+small {font-size: 80%;}
+
+span {display: block;}
+
+/********************************
+  5. Content          
+*********************************/
+
+/** 5.1 Header ******************/
+header[role="banner"] { padding: 3em 1em 6em 1em;}
+header[role="banner"] h1 {
+  margin: 0 auto .5em auto;
+}
+
+.logo {
+ color: var(--black);
+ text-decoration: none;
+ font-weight: 800;
+ font-size: 2rem;
+}
+
+.logo:hover {
+  text-decoration: none;
+  color: var(--black);
+}
+
+.active-link {
+  color: var(--orange);
+}
+
+.active-link:hover {
+  text-decoration: none;
+}
+
+.retro-player {
+  max-width: 15em;
+  padding-bottom: 4em;
+  display: block;
+  margin: 0 auto;
+}
+/** 5.2 buttons *****************/
+
+.button, button {
+  text-decoration: none;
+  color: var(--white);
+  font-weight: bold;
+  border-radius: 500px;
+  background-color: var(--orange);
+  padding: 1em 2em;
+  border: 0;
+}
+
+.button:hover, button {
+  color: var(--white);
+  background-color: var(--orange-dark);
+  text-decoration: none;
+}
+
+button {
+  padding: .5em;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  margin-top: 1em;
+}
+
+/** 5.3 Noscript samples ********/
+.samples {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  max-width: 1100px;
+}
+
+.audio-sample {
+  margin: .5em;
+  padding: 1em;
+  background-color: var(--gray-light);
+  border-radius: var(--border-radius);
+  position: relative;
+  flex: 1;
+  text-align: left;
+}
+
+.audio-sample:before {
+  content: "";
+  display: block;
+  padding-top: 100%;
+}
+
+.audio-sample img {
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: var(--border-radius);
+}
+
+.audio-sample span {
+  font-size: 1.25rem;
+  font-weight: bold;
+  position: relative;
+  z-index: 1;
+  background-color: var(--orange);
+  border-radius: 500px;
+  margin-bottom: .5em;
+  padding: .5em 1em;
+  max-width: 8em;
+}
+
+.audio-sample audio {
+  position: relative;
+  z-index: 1;
+}
+
+/** 5.4 Footer ******************/
+.footer {
+  background: var(--gray-light);
+  padding: 2em 1em;
+}
+
+.footer small {padding-top: 1em;}
+.footer small,
+.footer h2 {
+  max-width: 980px;
+  margin: 0 auto;
+  display: block;
+}
+
+.footer h2 {font-size: calc(28px + (36 - 28) * ((100vw - 300px) / (1600 - 300)));}
+
+/** 5.5 Beatbox kit ************/
+.kit-enclosure {
+  width: 100%;
+  max-width: 1100px;
+  min-height: 500px;
+  background-color: var(--black);
+  margin: 0 auto;
+  padding: 2em;
+  border-left: 2.5em solid burlywood;
+  border-right: 2.5em solid burlywood;
+  border-radius: var(--border-radius);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+  color: var(--white);
+}
+
+.kit-enclosure h1 {
+  color: var(--white);
+  margin: 0;
+}
+
+.card {
+  border-radius: var(--border-radius);
+  font-weight: bold;
+  flex: 1 0 30%;
+}
+
+.card {
+  margin: 0 .25em;
+  padding: .735em 0;
+}
+
+.card span {
+  margin-bottom: .5em;
+  text-align: center;
+}
+
+.card audio {
+  width: 100%;
+  height: 1.75em;
+}
+
+.group {
+  display: flex;
+  flex-wrap: wrap;
+}
