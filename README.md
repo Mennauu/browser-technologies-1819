@@ -6,26 +6,30 @@
 <br>
 
 <p align="center">
-  <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week1">
-    <img src="https://img.shields.io/badge/week-1-green.svg?style=flat-square" alt="week1">
+  <a href="https://browser-technologies-1819.herokuapp.com/">
+    <img src="https://img.shields.io/badge/week-1-brightgreen.svg?style=flat-square" alt="week1">
   </a>
   &nbsp;&nbsp;&nbsp;
-  <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week2">
-    <img src="https://img.shields.io/badge/week-2-red.svg?style=flat-square" alt="week2">
+  <a href="https://browser-technologies-1819.herokuapp.com/">
+    <img src="https://img.shields.io/badge/week-2-brightgreen.svg?style=flat-square" alt="week2">
   </a>
   &nbsp;&nbsp;&nbsp;
-  <a href="https://mennauu.github.io/web-app-from-scratch-18-19/week3">
+  <a href="https://browser-technologies-1819.herokuapp.com/">
     <img src="https://img.shields.io/badge/week-3-red.svg?style=flat-square" alt="week3">
   </a>
   &nbsp;&nbsp;&nbsp;
-  <a href="https://github.com/Mennauu/web-app-from-scratch-18-19/blob/master/LICENSE">
+  <a href="https://browser-technologies-1819.herokuapp.com/">
+    <img src="https://img.shields.io/badge/demo-live-brightgreen.svg?style=flat-square" alt="demo">
+  </a>
+  &nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/Mennauu/browser-technologies-1819/blob/master/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="License">
   </a>
 </p> 
 
 <br>
 
-![preview](assets/preview.png)
+![preview](readme-assets/preview.png)
 
 <br>
 
