@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "minifyCSS": "cleancss -o public/styles.min.css assets/css/styles.css",
     "revision": "node scripts/unique-hash.js",
