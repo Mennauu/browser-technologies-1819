@@ -2,7 +2,7 @@ const shrinkRay = require('shrink-ray-current')
 const express = require('express')
 const path = require('path')
 const app = express()
-const port = 8000
+const port = 3000
 
 // Disable x-powered-by header
 app.disable('x-powered-by')
