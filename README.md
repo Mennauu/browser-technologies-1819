@@ -196,7 +196,7 @@ Wow! That looks awful, but it works! In all browsers that are used today. It's d
 #### Usable
 Let's turn on CSS, to make it so that users won't be like: "What the freak am I looking at!?".
 
-![no-js-and-css](readme-assets/usable.png)
+![no-js-and-css](readme-assets/usable-new.png)
 
 That's a lot more pleasant to look at, which makes it actually usable. It's still pretty boring though.
 
