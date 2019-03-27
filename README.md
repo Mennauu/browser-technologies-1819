@@ -1,6 +1,6 @@
 <h1 align="center">Browser Technologies @cmda-minor-web 1819</h1>
 
-<p align="center"><b>Een demo op basis van de use case: Ik wil kunnen beatboxen; met als doel dat alle gebruikers, met alle browsers, in iedere context minimaal de core functionaliteit te zien/horen/voelen krijgen.</a>.</b>
+<p align="center"><b>A demo based on the use case: I want to be able to beatbox; with the aim that all users, with all browsers, can see or hear at least the core functionality in every context.</a>.</b>
 </p>
 
 <br>
@@ -35,7 +35,7 @@
 
 <!-- ☝️ replace this description with a description of your own work -->
 ## Introduction
-[ ...Description... ]
+This Beat Box Kit website is made as part of a course from [@cmda-minor-web 18-19](https://github.com/cmda-minor-web/browser-technologies-1819). In this course I had to make a website with the aim that all users, with all browser can see the core functionality. The idea was to build the website based on [progressive enhancement](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement).
 
 Some resources possess an emoticon to help you understand which type of content you may find:
 
@@ -56,15 +56,15 @@ Some resources possess an emoticon to help you understand which type of content 
     - [Problems](#problems)
     - [How to achieve](#how-to-achieve)
     - [Examples](#examples)
-- [Implementations](#implementations)
-  - [Turn off images](#turn-off-images)
-  - [Disable custom fonts](#disable-custom-fonts)
-  - [Disable JavaScript](#disable-javascript)
-  - [Turn off colors](#turn-off-colors)
-  - [Turn off broadband internet](#turn-off-broadband-internet)
-  - [Cookies](#cookies)
-  - [LocalStorage doesn't work](#localstorage-doesnt-work)
-  - [Mouse and trackpad don't work](#mouse-and-trackpad-dont-work)
+  - [Implementations](#implementations)
+    - [Turn off images](#turn-off-images)
+    - [Disable custom fonts](#disable-custom-fonts)
+    - [Disable JavaScript](#disable-javascript)
+    - [Turn off colors](#turn-off-colors)
+    - [Turn off broadband internet](#turn-off-broadband-internet)
+    - [Cookies](#cookies)
+    - [LocalStorage doesn't work](#localstorage-doesnt-work)
+    - [Mouse and trackpad don't work](#mouse-and-trackpad-dont-work)
 - [Checklist](#checklist)
 - [Credits](#credits)
 - [Sources](#sources)
@@ -79,12 +79,26 @@ cd /~path
 ```
 3. Clone the repository (you're going to need [Git](https://www.linode.com/docs/development/version-control/how-to-install-git-on-linux-mac-and-windows/))
 ```bash
-git clone https://github.com/Mennauu/web-app-from-scratch-18-19
+git clone https://github.com/Mennauu/browser-technologies-1819
 ```
-4. 
+4. Change directory to repository
+```bash
+cd browser-technologies-1819
+```
+5. Install dependencies from [package.json](https://github.com/Mennauu/browser-technologies-1819/blob/master/package.json)
+```bash
+npm install
+```
+6. Run application with [Node](https://nodejs.org/en/)
+```bash
+node app.js
+```
 
 ## Feature research
-The goal is to research at least two features that are being used on websites and figure out what impact these features have on sites I, and you, know and use normally.
+The goal was to research at least two features that are being used on websites and figure out what impact these features have on sites I, and you, know and normally use.
+
+<details>
+  <summary>You want to read my awesome research? Click here!</summary>
 
 ### JavaScript
 Websites without JavaScript.
@@ -118,37 +132,42 @@ You can achieve a slow network connection by opening your console and navigating
 #### Examples
 Once again I was very curious how fast smashingmagazine.com would load on a slow 3G network connection. It took 9 seconds to load everything, which is very fast! However, it loads everything at the same time, as if the entire page is loaded asynchronous. It could only show HTML first, and afterwards load CSS.
 
-## Implementations
+### Implementations
 
-### Turn off images
+#### Turn off images
 The alt text from the images on the homepage could be removed.
 
 - [ ] Also implement a placeholder on the subject page and detail page for images
 
-### Disable custom fonts
+#### Disable custom fonts
 If custom fonts are disabled calibri is used
 
-### Disable JavaScript
+#### Disable JavaScript
 No difference
 
-### Turn off colors
+#### Turn off colors
 No difference
 
-### Turn off broadband internet
+#### Turn off broadband internet
 Website is optimized to work with a bad internet connection
 
 - [ ] Only change the etag of html files if there is actually a change in the html
 
-### Cookies
+#### Cookies
 We do not use cookies, yet
 
-### LocalStorage doesn't work
+#### LocalStorage doesn't work
 LocalStorage is not used
 
-### Mouse and trackpad don't work
+#### Mouse and trackpad don't work
 You can tab through the website completely (and easily)
 
 - [ ] Add a back button, or breadcrumbs
+
+</summary>
+
+## Beatbox Kit
+
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
 ## Checklist

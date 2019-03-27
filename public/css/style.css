@@ -87,7 +87,7 @@ section[role="heading"]:first-of-type {
 fieldset {
   border-radius: 5px;
   border-radius: var(--border-radius);
-  border: 2px #797979 solid;
+  border: 2px #fff solid;
 }
 
 fieldset:first-of-type {
@@ -98,9 +98,10 @@ fieldset:first-of-type {
 }
 
 legend {
-  color: #797979;
+  color: #fff;
   font-size: 24px;
   font-size: 1.5rem;
+  font-weight: bold;
 }
 
 label {
@@ -132,10 +133,13 @@ select {
 input[type='checkbox'] {
   zoom: 1.1;
   transform: scale(2);
+  margin: 12px;
 }
 
 .checkbox--label {
-  margin-left: .3em;
+  font-size: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 button {
@@ -273,8 +277,8 @@ header[role="banner"] h1 {
 }
 
 .retro-player {
-  max-width: 240px;
-  max-width: 15em;
+  max-width: 300px;
+  max-width: 18.75em;
   padding-bottom: 64px;
   padding-bottom: 4em;
   display: block;
@@ -369,9 +373,11 @@ button {
   max-width: 8em;
 }
 
-.audio-sample audio {
+.audio-sample audio,
+.audio-sample embed {
   position: relative;
   z-index: 1;
+  max-width: 300px;
 }
 
 /** 5.4 Footer ******************/
@@ -459,7 +465,7 @@ button {
 }
 
 .key {
-  transition: 0.10s;
+  transition: 0.13s;
   min-width: 120px;
   height: 120px;
   background: #e5e5e5;
@@ -472,7 +478,9 @@ button {
   margin: 0.3em;
 }
 
-.key:active {outline: none;}
+.key:focus {
+  border-width: 2px;
+}
 
 .key .letter {
   font-size: 32px;

@@ -2,24 +2,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const noJS = document.querySelector('.no-js')
   const withJS = document.querySelector('.with-js')
 
-  // Remove element if JavaScript is enabled
   noJS.remove()
-  // Show element if JavaScript is enabled
   showElement(withJS)
-  // Trigger appendData
   appendData()
-  // After data is set, select all key elements
+
   const keyDivs = document.querySelectorAll('.key')
 
   keyDivs.forEach(key => {
-    // Trigger playSound on button click
-    key.addEventListener('click', playSound)
-    // If element has ended with transitioning, trigger removeClass
+    key.addEventListener('click', playClickedSound)
     key.addEventListener('transitionend', removeClass)
   })
-  // Trigger playSound on keydown
+
   document.addEventListener('keydown', (key) => {
-    playSound(key)
+    playPressedSound(key)
     handleFirstTab(key)
   })
 })
@@ -51,37 +46,45 @@ const appendData = () => {
   }
 }
 
-const playSound = (key) => {
-  const soundNames = ['Ahh', 'Boom', 'Breath', 'Buff', 'Clap', 'Click', 'Crack', 'Hat', 'Hiss', 'Kick', 'Pop', 'Snare']
+const playPressedSound = (key) => {
   const keyCodes = [81, 87, 69, 82, 65, 83, 68, 70, 90, 88, 67, 86]
-  const loopInput = document.querySelector('.loop')
-
-  const pressedKey = key.Keycode ? key.Keycode : null
-  const clickedKey = key.currentTarget.getAttribute('data-keycode') ? key.currentTarget.getAttribute('data-keycode') : null
+  const soundNames = ['Ahh', 'Boom', 'Breath', 'Buff', 'Clap', 'Click', 'Crack', 'Hat', 'Hiss', 'Kick', 'Pop', 'Snare']
 
   for (let i in keyCodes) {
-
-    if (pressedKey == keyCodes[i] && clickedKey == keyCodes[i]) {
-      const sound = document.querySelector(`.${soundNames[i].toLowerCase()}`)
-      const button = sound.parentNode
-
-      if (loopInput.checked) {
-        if (button.classList.contains('looped-key')) {
-          button.classList.remove('looped-key')
-          button.querySelector('audio').loop = false
-        } else {
-          sound.loop = true
-          button.classList.add('looped-key')
-        }
-      } else {
-        sound.loop = false
-      }
-
-      sound.paused ? sound.play() : sound.currentTime = 0
-      button.classList.add('active-key')
-      loopInput.addEventListener("change", turnOffLoop)
-    }
+    const sound = document.querySelector(`.${soundNames[i].toLowerCase()}`)
+    if (key.keyCode == keyCodes[i]) soundHandler(sound)
   }
+}
+
+const playClickedSound = (key) => {
+  const keyCodes = [81, 87, 69, 82, 65, 83, 68, 70, 90, 88, 67, 86]
+  const soundNames = ['Ahh', 'Boom', 'Breath', 'Buff', 'Clap', 'Click', 'Crack', 'Hat', 'Hiss', 'Kick', 'Pop', 'Snare']
+
+  for (let i in keyCodes) {
+    const sound = document.querySelector(`.${soundNames[i].toLowerCase()}`)
+    if (key.currentTarget.dataset.keycode == keyCodes[i]) soundHandler(sound)
+  }
+}
+
+const soundHandler = (sound) => {
+  const loopInput = document.querySelector('.loop')
+  const button = sound.parentNode
+
+  if (loopInput.checked) {
+    if (button.classList.contains('looped-key')) {
+      button.classList.remove('looped-key')
+      button.querySelector('audio').loop = false
+    } else {
+      sound.loop = true
+      button.classList.add('looped-key')
+    }
+  } else {
+    sound.loop = false
+  }
+
+  sound.paused ? sound.play() : sound.currentTime = 0
+  button.classList.add('active-key')
+  loopInput.addEventListener("change", turnOffLoop)
 }
 
 const showElement = (element) => element.style.display = "block"
