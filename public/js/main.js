@@ -18,7 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
     key.addEventListener('transitionend', removeClass)
   })
   // Trigger playSound on keydown
-  document.addEventListener('keydown', playSound)
+  document.addEventListener('keydown', (key) => {
+    playSound(key)
+    handleFirstTab(key)
+  })
 })
 
 /* TO-DO: If browser does not support audio element, show no-js version
@@ -53,25 +56,65 @@ const playSound = (key) => {
   const keyCodes = [81, 87, 69, 82, 65, 83, 68, 70, 90, 88, 67, 86]
   const loopInput = document.querySelector('.loop')
 
-  for (let i in keyCodes) {
-    if (key.keyCode == keyCodes[i] || key.path[1].dataset.keycode == keyCodes[i]) {
-      const sound = document.querySelector(`.${soundNames[i].toLowerCase()}`)
-      const audioFiles = document.querySelectorAll('audio')
+  const pressedKey = key.Keycode ? key.Keycode : null
+  const clickedKey = key.currentTarget.getAttribute('data-keycode') ? key.currentTarget.getAttribute('data-keycode') : null
 
-      sound.paused ? sound.play() : sound.currentTime = 0
-      sound.parentNode.classList.add('active-key')
+  for (let i in keyCodes) {
+
+    if (pressedKey == keyCodes[i] && clickedKey == keyCodes[i]) {
+      const sound = document.querySelector(`.${soundNames[i].toLowerCase()}`)
+      const button = sound.parentNode
 
       if (loopInput.checked) {
-        sound.loop = true
+        if (button.classList.contains('looped-key')) {
+          button.classList.remove('looped-key')
+          button.querySelector('audio').loop = false
+        } else {
+          sound.loop = true
+          button.classList.add('looped-key')
+        }
       } else {
-        audioFiles.forEach(audio => audio.currentTime = 0)
+        sound.loop = false
       }
+
+      sound.paused ? sound.play() : sound.currentTime = 0
+      button.classList.add('active-key')
+      loopInput.addEventListener("change", turnOffLoop)
     }
   }
 }
 
 const showElement = (element) => element.style.display = "block"
 
+const handleFirstTab = (key) => {
+  if (key.keyCode === 9) {
+    document.body.classList.add('user-is-tabbing')
+
+    document.removeEventListener('keydown', handleFirstTab)
+    document.addEventListener('mousedown', handleMouseDownOnce)
+  }
+}
+
+const handleMouseDownOnce = () => {
+  document.body.classList.remove('user-is-tabbing')
+
+  document.removeEventListener('mousedown', handleMouseDownOnce)
+  document.addEventListener('keydown', handleFirstTab)
+}
+
+/* This refers to the window object when using arrow functions */
+function turnOffLoop() {
+  const audioFiles = document.querySelectorAll('audio')
+
+  if (!this.checked) {
+    audioFiles.forEach(audio => {
+      audio.pause()
+      audio.parentNode.classList.remove('looped-key')
+    })
+  }
+}
+
 function removeClass() {
   this.classList.remove('active-key')
 }
+
