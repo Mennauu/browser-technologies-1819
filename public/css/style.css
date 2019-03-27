@@ -14,7 +14,7 @@
   --orange: #f5a623;
   --orange-dark: #dc951f;
   --purple: #eaedfb;
-  --red: #e74c3c;
+  --red: #cf4436;
   --white: #fff;
  /* Fonts */
  --font-nt-sans: "Nunito Sans", sans-serif;
@@ -74,12 +74,12 @@ main > div {
   background: var(--purple);
 }
 
-section[role="heading"] {
+.heading {
   background: #fff;
   background: var(--white);
 }
 
-section[role="heading"]:first-of-type {
+.heading:first-of-type {
   background: #fafbfc;
   background: var(--gray-light);
 }
@@ -225,12 +225,13 @@ a {
   text-decoration: none;
   color: #000;
   color: var(--black);
+  font-weight: bold;
 }
 
 a:hover {
   text-decoration: underline;
-  color: #f5a623;
-  color: var(--orange);
+  color: #cf4436;
+  color: var(--red);
 }
 
 small {font-size: 80%;}
@@ -268,8 +269,8 @@ header[role="banner"] h1 {
 }
 
 .active-link {
-  color: #f5a623;
-  color: var(--orange);
+  color: #cf4436;
+  color: var(--red);
 }
 
 .active-link:hover {
@@ -292,8 +293,8 @@ header[role="banner"] h1 {
   color: var(--white);
   font-weight: bold;
   border-radius: 500px;
-  background-color: #f5a623;
-  background-color: var(--orange);
+  background-color: #cf4436;
+  background-color: var(--red);
   padding: 16px 32px;
   padding: 1em 2em;
   border: 0;
@@ -302,8 +303,8 @@ header[role="banner"] h1 {
 .button:hover, button {
   color: #fff;
   color: var(--white);
-  background-color: #dc951f;
-  background-color: var(--orange-dark);
+  background-color: #cf4436;
+  background-color: var(--red);
   text-decoration: none;
 }
 

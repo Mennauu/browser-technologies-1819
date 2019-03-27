@@ -35,7 +35,7 @@
 
 <!-- ☝️ replace this description with a description of your own work -->
 ## Introduction
-This Beat Box Kit website is made as part of a course from [@cmda-minor-web 18-19](https://github.com/cmda-minor-web/browser-technologies-1819). In this course I had to make a website with the aim that all users, with all browser can see the core functionality. The idea was to build the website based on [progressive enhancement](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement).
+This Beat Box Kit is made as part of a course from [@cmda-minor-web 18-19](https://github.com/cmda-minor-web/browser-technologies-1819). In this course I had to make a website with the aim that all users, with all browser can see the core functionality. The idea was to build the website based on [progressive enhancement](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement).
 
 Some resources possess an emoticon to help you understand which type of content you may find:
 
@@ -98,7 +98,7 @@ node app.js
 The goal was to research at least two features that are being used on websites and figure out what impact these features have on sites I, and you, know and normally use.
 
 <details>
-  <summary>You want to read my awesome research? Click here!</summary>
+  <summary>Do you really want to read my research? It's boring!</summary>
 
 ### JavaScript
 Websites without JavaScript.
@@ -110,8 +110,12 @@ There is a portion of people that deliberately turned off JavaScript: [0.2% of p
 
 JavaScript requires a stable internet connection to load properly. If your user has a poor internet connection, your website might take too long to load, making the user retreat from your website.
 
+> * 📖 [Blockmetry: JavaScript Disabled](https://blockmetry.com/blog/javascript-disabled)
+
 #### How to achieve
 In all browsers you can turn off JavaScript in the browser settings. You can follow the steps, for your specific browser, on this page: [WikiHow: Disable JavaScript](https://www.wikihow.com/Disable-JavaScript) to turn off JavaScript.
+
+> * 📖 [WikiHow: Disable JavaScript](https://www.wikihow.com/Disable-JavaScript)
 
 #### Examples
 The first website I wanted to try without JavaScript is a site I created myself: abc-legal.com. Turns out, the website works loads extremely fast without JavaScript and looks nearly identical. The two things that don't work are slideshows and the ability to change from language. We could solve those problems by showing a static image for the slideshow, and hard-linking the different languages options (these are being loaded dynamically by JavaScript, right now).
@@ -164,10 +168,58 @@ You can tab through the website completely (and easily)
 
 - [ ] Add a back button, or breadcrumbs
 
-</summary>
+</details>
 
 ## Beatbox Kit
 
+With the Beatbox Kit you can create your own beat by pressing the shown key or clicking on the concerning button, as much as you like, or at the same time. If you check the "Loop" input, the buttons you press will keep playing (in a loop).
+
+![preview](readme-assets/beatbox-kit.png)
+
+### Progressive enhancement
+we start with a simple usable experience, and step by step enrich the user experience when we are sure that browsers support this enrichment.
+
+#### Functional and reliable
+Let's start by turning off JavaScript and CSS!
+
+![no-js-and-css](readme-assets/functional.png)
+
+Wow! That looks awful, but it works! In all browsers that are used today. It's different than the main idea though, because JavaScript is disabled, you can't add audio events to keybinds or buttons. Without JavaScript you can listen to the beat samples, and select 4 beats in the form. After submitting the form, an mp3 file will be returned with your beat based on the options you have chosen!
+
+<details>
+  <summary>Check audit results for this version!</summary>
+
+  ![audit results](readme-assets/audit.png)
+
+</details>
+
+#### Usable
+Let's turn on CSS, to make it so that users won't be like: "What the freak am I looking at!?".
+
+![no-js-and-css](readme-assets/usable.png)
+
+That's a lot more pleasant to look at, which makes it actually usable. It's still pretty boring though.
+
+<details>
+  <summary>Check audit results for this version!</summary>
+
+  ![audit results](readme-assets/audit.png)
+
+</details>
+
+#### Pleasurable
+Let's turn on everything!
+
+![preview](readme-assets/beatbox-kit.png)
+
+That's more like it. You can now create your beat (live!) by pressing on buttons on your keyboard, cool!
+
+<details>
+  <summary>Check audit results for this version!</summary>
+
+  ![audit results](readme-assets/audit.png)
+
+</details>
 
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
 ## Checklist
