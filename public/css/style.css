@@ -348,7 +348,41 @@ button {
   height: 1.75em;
 }
 
-.group {
+.key-container {
   display: flex;
   flex-wrap: wrap;
 }
+
+.key {
+  transition: 0.10s;
+  min-width: 120px;
+  height: 120px;
+  background: #E5E5E5;
+  background: radial-gradient(ellipse at center, #E5E5E5 39%, #CACACA 100%);
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+  color: #797979;
+  flex: 1 0 23%;
+  margin: 0.3em;
+  outline: none;
+}
+
+.key .letter {
+  font-size: 2rem;
+}
+
+.sample-field {
+  max-width: 640px;
+  float: left;
+}
+
+.active-key,
+.looped-key {
+  transform: scale(1.1);
+  border: 6px solid orange;
+  /* color: #535353; */
+  /* background: #cdffbc; */
+  /* background: radial-gradient(ellipse at center, #cdffbc 0%, #aaccab 100%); */
+}
+
+/** 5.6 No JavaScript *********/
+.with-js {display: none;}

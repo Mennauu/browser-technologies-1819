@@ -19,7 +19,7 @@
   </a>
   &nbsp;&nbsp;&nbsp;
   <a href="https://browser-technologies-1819.herokuapp.com/">
-    <img src="https://img.shields.io/badge/demo-live-brightgreen.svg?style=flat-square" alt="demo">
+    <img src="https://img.shields.io/badge/demo-LIVE-brightgreen.svg?style=flat-square" alt="demo">
   </a>
   &nbsp;&nbsp;&nbsp;
   <a href="https://github.com/Mennauu/browser-technologies-1819/blob/master/LICENSE">

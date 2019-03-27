@@ -34,7 +34,7 @@
     <main>
       <div>
         <div class="kit-enclosure">
-          <noscript>
+          <div class="no-js">
             <form action="/create-mp3-file/" method="GET">
               <fieldset>
                 <legend>Create your own beat</legend>
@@ -107,7 +107,7 @@
             </form>
             <fieldset>
               <legend>Listen to options</legend>
-              <div class="group">
+              <div class="key-container">
                 <div class="card">
                   <span>Ahh</span>
                   <audio src="./sounds/ahh.wav" type="audio/wav" controls>
@@ -122,7 +122,7 @@
                 </div>
                 <div class="card">
                   <span>Breath</span>
-                  <audio src="./sounds/breath1.wav" type="audio/wav" controls>
+                  <audio src="./sounds/breath.wav" type="audio/wav" controls>
                     Your browser does not support the <code>audio</code> element.
                   </audio>
                 </div>
@@ -182,7 +182,18 @@
                 </div>
               </div>
             </fieldset>
-          </noscript>
+          </div>
+          <div class="with-js">
+            <fieldset class="sample-field">
+              <legend>Samples</legend>
+              <div class="key-container"></div>
+            </fieldset>
+            <fieldset>
+              <legend>Panel</legend>
+              <input type="checkbox" name="loop" class="loop">
+              <label for="loop">loop</label>
+            </fieldset>
+          </div>
         </div>
       </div>
     </main>
@@ -191,5 +202,6 @@
       <small>&copy; Copyright 2019 Beatbox Kit</small>
     </footer>
   </body>
+  <script type="text/javascript" src="/js/main.js"></script>
 
 </html>
