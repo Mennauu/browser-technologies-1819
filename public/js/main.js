@@ -1,11 +1,8 @@
-if (isIE()) {
-  console.log("You're such a cool beans for using Internet Explorer")
-} else {
+if (supportsVideoType('wav') === "probably") {
   document.addEventListener('DOMContentLoaded', () => {
     const noJS = document.querySelector('.no-js')
     const withJS = document.querySelector('.with-js')
 
-    console.log("You're such a cool beans for using Internet Explorer")
     noJS.parentNode.removeChild(noJS)
     showElement(withJS)
     appendData()
@@ -21,6 +18,9 @@ if (isIE()) {
       handleFirstTab(key)
     })
   })
+} else {
+  const audio = document.querySelector('audio')
+  audio.remove()
 }
 
 const appendData = () => {
@@ -120,11 +120,11 @@ function removeClass() {
   this.classList.remove('active-key')
 }
 
-/* function that returns boolean in case the browser is Internet Explorer
-   Source: https://jsfiddle.net/alvaroAV/svvz7tkn/ */
-function isIE() {
-  var ua = navigator.userAgent;
-  /* MSIE used to detect old browsers and Trident used to newer ones*/
-  var is_ie = ua.indexOf("MSIE ") > -1 || ua.indexOf("Trident/") > -1;
-  return is_ie;
+function supportsAudioType(type) {
+  let audio
+  const formats = { mp3: 'audio/mp3', wav: 'audio/wav' }
+
+  if (!audio) audio = document.createElement('audio')
+
+  return audio.canPlayType(formats[type] || type)
 }

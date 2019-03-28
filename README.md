@@ -48,7 +48,7 @@ Some resources possess an emoticon to help you understand which type of content 
 
 - [Installation](#installation)
 - [Feature research](#feature-research)
-  - [JavaScript](#javascript)
+  - [No JavaScript](#no-javascript)
     - [Problems](#problems)
     - [How to achieve](#how-to-achieve)
     - [Examples](#examples)
@@ -65,8 +65,17 @@ Some resources possess an emoticon to help you understand which type of content 
     - [Cookies](#cookies)
     - [LocalStorage doesn't work](#localstorage-doesnt-work)
     - [Mouse and trackpad don't work](#mouse-and-trackpad-dont-work)
-- [Checklist](#checklist)
-- [Credits](#credits)
+- [Beatbox Kit](#beatbox-kit)
+  - [Progressive enhancement](#progressive-enhancement)
+    - [Functional and reliable](#functional-and-reliable)
+    - [Usable](#usable)
+    - [Pleasureable](#pleasureable)
+  - [Feature detection](#feature-detection)
+    - [HTML](#html)
+    - [CSS](#css)
+    - [JavaScript](#javascript)
+  - [Audits]
+- [Wishlist](#withlist)
 - [Sources](#sources)
 - [License](#license)
 
@@ -100,7 +109,7 @@ The goal was to research at least two features that are being used on websites a
 <details>
   <summary>Do you really want to read my research? It's boring!</summary>
 
-### JavaScript
+### No JavaScript
 Websites without JavaScript.
 
 #### Problems
@@ -223,8 +232,17 @@ That's more like it. You can now create your beat (live!) by pressing on buttons
 
 ### Feature detection
 
+#### HTML
+Just one that really stands out and is worth mentioning. If the audio tag is not supported, we show the embed tag! You're welcome, Internet Explorer 5.
+
+```HTML
+<audio src="./sounds/ahh.wav" type="audio/wav" controls>
+  <embed src='./sounds/ahh.wav' autostart='false' loop='false' width='300' height='100'>
+</audio>
+```
+
 #### CSS
-Let's start with CSS features. I use a lot of modern CSS properties, so we're gonna have to write a lot of fallbacks.
+I use a lot of modern CSS properties, so we're gonna have to write a lot of fallbacks.
 
 1. Custom properties
 
@@ -288,15 +306,6 @@ div {
 
 There are more like: CSS Zoom, Transform, transitions etc. I use them, but they don't require a fallback. They are only there for more pleasure, not as necessity.
 
-#### HTML
-Just one that really stands out and is worth mentioning. If the audio tag is not supported, we show the embed tag! You're welcome, Internet Explorer 5.
-
-```HTML
-<audio src="./sounds/ahh.wav" type="audio/wav" controls>
-  <embed src='./sounds/ahh.wav' autostart='false' loop='false' width='300' height='100'>
-</audio>
-```
-
 #### JavaScript
 
 1. ES6
@@ -325,7 +334,8 @@ div.parentNode.removeChild(div)
 > * 📖 [DZONE: JavaScript remove() method](https://blockmetry.com/blog/javascript-disabled)
 
 3. forEach() on NodeList
-Internet Explorer doesn't support a regular forEach on a NodeList (neither do old versions of modern browsers), lets say querySelectorAll. Which means my entire site breaks on IE 9, 10 and 11 and older browsers. We have to fix that.
+
+Internet Explorer doesn't support a regular forEach on a NodeList (neither do old versions of modern browsers), which means the entire site breaks on IE 9, 10 and 11 and older browsers. We have to fix that.
 I found a solution on [Stack Overflow](https://stackoverflow.com/questions/13433799/why-doesnt-nodelist-have-foreach).
 
 ```JavaScript
@@ -342,24 +352,67 @@ Array.prototype.forEach.call(keyDivs, (key) => {
 })
 ```
 
-<!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
-## Checklist
-- [x] Filled
-- [ ] Empty
+4. Audio type support
 
-<!-- Maybe someone helped me 🤔-->
-## Credits
+This one is huge, because without it the core functionality could break (audio will say it's not supported, instead of showing the fallback)
+
+I found this solution from David Wals: [Detect supported audio formats](https://davidwalsh.name/detect-supported-audio-formats-javascript)
+
+```javascript
+if(supportsVideoType('wav') === "probably") { ... } // Usage
+
+function supportsAudioType(type) {
+  let audio
+  const formats = { mp3: 'audio/mp3', wav: 'audio/wav' }
+
+  if (!audio) audio = document.createElement('audio')
+
+  return audio.canPlayType(formats[type] || type)
+}
+```
+
+> * 📖 [[Detect supported audio formats with JavaScript](https://davidwalsh.name/detect-supported-audio-formats-javascript)
+
+### Audits
+I did multiple (google lighthouse) audits throughout the project (to check for performance and accessibility). Performance was always 100%, but accessibility was hanging on 91%; there was one problem. Best practice is 93% (you only get 100% if you use HTTP2). SEO is 100%.
+
+![Audit no fix](readme-assets/audit-without-fix.png)
+
+The problem was constrast ratio based on background and foreground colors.
+
+![Contrast](readme-assets/contrast.png)
+
+I checked the score of the color by using this amazing online tool called [Contrast Ratio](https://contrast-ratio.com/#%23cf4436-on-white)
+
+![Contrast score](readme-assets/contrast-score.png)
+
+The score is 2.02, which is really bad! I fixed it by chaning the color to darkish red.
+
+![Contrast score red](readme-assets/contrast-score-red.png)
+
+Now the Audit also gives 100% on accessibility!
+
+![audit results](readme-assets/audit.png)
+
+> * 🛠 [Contrast Ratio](https://contrast-ratio.com/#%23cf4436-on-white)
+
+<!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
+## Wishlist
+- [ ] Rewrite fallback code for looping audio files
+- [ ] Rewrite code so the pleasureable functionality also works in Internet Explorer 9+
 
 <!-- Maybe I used some awesome sources that I can mention 🤔-->
 ## Sources
 Underneath you will find all the sources that were previously mentioned throughout the document and some others which were helpful.
 
 > * 🛠 [Contrast Ratio](https://contrast-ratio.com/#%23cf4436-on-white)
+> * 🛠 [Can I use](https://caniuse.com/)
 
 > * 📖 [Feature Detection](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Feature_detection)
 > * 📖 [WikiHow: Disable JavaScript](https://www.wikihow.com/Disable-JavaScript)
 > * 📖 [Blockmetry: JavaScript Disabled](https://blockmetry.com/blog/javascript-disabled)
 > * 📖 [DZONE: JavaScript remove() method](https://blockmetry.com/blog/javascript-disabled)
+> * 📖 [[Detect supported audio formats with JavaScript](https://davidwalsh.name/detect-supported-audio-formats-javascript)
 
 <!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
 ## License 
