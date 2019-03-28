@@ -1,12 +1,9 @@
 "use strict";
 
-if (isIE()) {
-  console.log("You're such a cool beans for using Internet Explorer");
-} else {
+if (supportsVideoType('wav') === "probably") {
   document.addEventListener('DOMContentLoaded', function () {
     var noJS = document.querySelector('.no-js');
     var withJS = document.querySelector('.with-js');
-    console.log("You're such a cool beans for using Internet Explorer");
     noJS.parentNode.removeChild(noJS);
     showElement(withJS);
     appendData();
@@ -22,7 +19,7 @@ if (isIE()) {
   });
 }
 
-var appendData = function appendData() {
+function appendData() {
   var keyContainer = document.querySelector('.key-container');
   var keys = ['Q', 'W', 'E', 'R', 'A', 'S', 'D', 'F', 'Z', 'X', 'C', 'V'];
   var keyCodes = [81, 87, 69, 82, 65, 83, 68, 70, 90, 88, 67, 86];
@@ -38,7 +35,7 @@ var appendData = function appendData() {
   }
 };
 
-var playPressedSound = function playPressedSound(key) {
+function playPressedSound(key) {
   var keyCodes = [81, 87, 69, 82, 65, 83, 68, 70, 90, 88, 67, 86];
   var soundNames = ['Ahh', 'Boom', 'Breath', 'Buff', 'Clap', 'Click', 'Crack', 'Hat', 'Hiss', 'Kick', 'Pop', 'Snare'];
 
@@ -48,7 +45,7 @@ var playPressedSound = function playPressedSound(key) {
   }
 };
 
-var playClickedSound = function playClickedSound(key) {
+function playClickedSound(key) {
   var keyCodes = [81, 87, 69, 82, 65, 83, 68, 70, 90, 88, 67, 86];
   var soundNames = ['Ahh', 'Boom', 'Breath', 'Buff', 'Clap', 'Click', 'Crack', 'Hat', 'Hiss', 'Kick', 'Pop', 'Snare'];
 
@@ -58,7 +55,7 @@ var playClickedSound = function playClickedSound(key) {
   }
 };
 
-var soundHandler = function soundHandler(sound) {
+function soundHandler(sound) {
   var loopInput = document.querySelector('.loop');
   var button = sound.parentNode;
 
@@ -79,11 +76,11 @@ var soundHandler = function soundHandler(sound) {
   loopInput.addEventListener("change", turnOffLoop);
 };
 
-var showElement = function showElement(element) {
+function showElement(element) {
   return element.style.display = "block";
 };
 
-var handleFirstTab = function handleFirstTab(key) {
+function handleFirstTab(key) {
   if (key.keyCode === 9) {
     document.body.classList.add('user-is-tabbing');
     document.removeEventListener('keydown', handleFirstTab);
@@ -91,13 +88,11 @@ var handleFirstTab = function handleFirstTab(key) {
   }
 };
 
-var handleMouseDownOnce = function handleMouseDownOnce() {
+function handleMouseDownOnce() {
   document.body.classList.remove('user-is-tabbing');
   document.removeEventListener('mousedown', handleMouseDownOnce);
   document.addEventListener('keydown', handleFirstTab);
 };
-/* This refers to the window object when using arrow functions */
-
 
 function turnOffLoop() {
   var audioFiles = document.querySelectorAll('audio');
@@ -114,12 +109,12 @@ function removeClass() {
   this.classList.remove('active-key');
 }
 
-/* function that returns boolean in case the browser is Internet Explorer
-   Source: https://jsfiddle.net/alvaroAV/svvz7tkn/ */
-function isIE() {
-  var ua = navigator.userAgent;
-  /* MSIE used to detect old browsers and Trident used to newer ones*/
-
-  var is_ie = ua.indexOf("MSIE ") > -1 || ua.indexOf("Trident/") > -1;
-  return is_ie;
+function supportsAudioType(type) {
+  var audio;
+  var formats = {
+    mp3: 'audio/mp3',
+    wav: 'audio/wav'
+  };
+  if (!audio) audio = document.createElement('audio');
+  return audio.canPlayType(formats[type] || type);
 }

@@ -18,9 +18,6 @@ if (supportsVideoType('wav') === "probably") {
       handleFirstTab(key)
     })
   })
-} else {
-  const audio = document.querySelector('audio')
-  audio.remove()
 }
 
 const appendData = () => {
