@@ -1,28 +1,27 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const noJS = document.querySelector('.no-js')
-  const withJS = document.querySelector('.with-js')
+if (isIE()) {
+  console.log("You're such a cool beans for using Internet Explorer")
+} else {
+  document.addEventListener('DOMContentLoaded', () => {
+    const noJS = document.querySelector('.no-js')
+    const withJS = document.querySelector('.with-js')
 
-  noJS.remove()
-  showElement(withJS)
-  appendData()
+    console.log("You're such a cool beans for using Internet Explorer")
+    noJS.parentNode.removeChild(noJS)
+    showElement(withJS)
+    appendData()
+    const keyDivs = document.querySelectorAll('.key')
 
-  const keyDivs = document.querySelectorAll('.key')
+    Array.prototype.forEach.call(keyDivs, (key) => {
+      key.addEventListener('click', playClickedSound)
+      key.addEventListener('transitionend', removeClass)
+    })
 
-  keyDivs.forEach(key => {
-    key.addEventListener('click', playClickedSound)
-    key.addEventListener('transitionend', removeClass)
+    document.addEventListener('keydown', (key) => {
+      playPressedSound(key)
+      handleFirstTab(key)
+    })
   })
-
-  document.addEventListener('keydown', (key) => {
-    playPressedSound(key)
-    handleFirstTab(key)
-  })
-})
-
-/* TO-DO: If browser does not support audio element, show no-js version
-
-
-*/
+}
 
 const appendData = () => {
   const keyContainer = document.querySelector('.key-container')
@@ -121,3 +120,11 @@ function removeClass() {
   this.classList.remove('active-key')
 }
 
+/* function that returns boolean in case the browser is Internet Explorer
+   Source: https://jsfiddle.net/alvaroAV/svvz7tkn/ */
+function isIE() {
+  var ua = navigator.userAgent;
+  /* MSIE used to detect old browsers and Trident used to newer ones*/
+  var is_ie = ua.indexOf("MSIE ") > -1 || ua.indexOf("Trident/") > -1;
+  return is_ie;
+}

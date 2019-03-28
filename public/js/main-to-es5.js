@@ -1,30 +1,26 @@
 "use strict";
 
-document.addEventListener('DOMContentLoaded', function () {
-  var noJS = document.querySelector('.no-js');
-  var withJS = document.querySelector('.with-js');
-
-  noJS.remove(); // Show element if JavaScript is enabled
-  showElement(withJS); // Trigger appendData
-  appendData(); // After data is set, select all key elements
-
-  var keyDivs = document.querySelectorAll('.key');
-  keyDivs.forEach(function (key) {
-    // Trigger playSound on button click
-    key.addEventListener('click', playClickedSound);
-    // If element has ended with transitioning, trigger removeClass
-    key.addEventListener('transitionend', removeClass);
+if (isIE()) {
+  console.log("You're such a cool beans for using Internet Explorer");
+} else {
+  document.addEventListener('DOMContentLoaded', function () {
+    var noJS = document.querySelector('.no-js');
+    var withJS = document.querySelector('.with-js');
+    console.log("You're such a cool beans for using Internet Explorer");
+    noJS.parentNode.removeChild(noJS);
+    showElement(withJS);
+    appendData();
+    var keyDivs = document.querySelectorAll('.key');
+    Array.prototype.forEach.call(keyDivs, function (key) {
+      key.addEventListener('click', playClickedSound);
+      key.addEventListener('transitionend', removeClass);
+    });
+    document.addEventListener('keydown', function (key) {
+      playPressedSound(key);
+      handleFirstTab(key);
+    });
   });
-  // Trigger playSound on keydown
-  document.addEventListener('keydown', function (key) {
-    playPressedSound(key);
-    handleFirstTab(key);
-  });
-});
-/* TO-DO: If browser does not support audio element, show no-js version
-
-
-*/
+}
 
 var appendData = function appendData() {
   var keyContainer = document.querySelector('.key-container');
@@ -116,4 +112,14 @@ function turnOffLoop() {
 
 function removeClass() {
   this.classList.remove('active-key');
+}
+
+/* function that returns boolean in case the browser is Internet Explorer
+   Source: https://jsfiddle.net/alvaroAV/svvz7tkn/ */
+function isIE() {
+  var ua = navigator.userAgent;
+  /* MSIE used to detect old browsers and Trident used to newer ones*/
+
+  var is_ie = ua.indexOf("MSIE ") > -1 || ua.indexOf("Trident/") > -1;
+  return is_ie;
 }

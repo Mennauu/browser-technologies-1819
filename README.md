@@ -174,7 +174,7 @@ You can tab through the website completely (and easily)
 
 With the Beatbox Kit you can create your own beat by pressing the shown key or clicking on the concerning button, as much as you like, or at the same time. If you check the "Loop" input, the buttons you press will keep playing (in a loop).
 
-![preview](readme-assets/beatbox-kit.png)
+![preview](readme-assets/schets.png)
 
 ### Progressive enhancement
 we start with a simple usable experience, and step by step enrich the user experience when we are sure that browsers support this enrichment.
@@ -189,7 +189,7 @@ Wow! That looks awful, but it works! In all browsers that are used today. It's d
 <details>
   <summary>Check audit results for this version!</summary>
 
-  ![audit results](readme-assets/audit.png)
+  ![audit results](readme-assets/audit-nothing.jpg)
 
 </details>
 
@@ -203,7 +203,7 @@ That's a lot more pleasant to look at, which makes it actually usable. It's stil
 <details>
   <summary>Check audit results for this version!</summary>
 
-  ![audit results](readme-assets/audit.png)
+  ![audit results](readme-assets/audit-nothing.jpg)
 
 </details>
 
@@ -221,6 +221,127 @@ That's more like it. You can now create your beat (live!) by pressing on buttons
 
 </details>
 
+### Feature detection
+
+#### CSS
+Let's start with CSS features. I use a lot of modern CSS properties, so we're gonna have to write a lot of fallbacks.
+
+1. Custom properties
+
+I make use of custom properties but [support isn't amazing for older browsers](https://caniuse.com/#search=custom%20properties). Luckily, fallbacks are easy to implement.
+
+```CSS
+:root {
+  --black: #212529;
+  --red: #cf4436;
+  --font-nt-sans: "Nunito Sans", sans-serif;
+  --border-radius: 5px;
+  ...
+}
+```
+
+```CSS
+body {
+  font-family: "Nunito Sans", sans-serif; /* fallback */
+  font-family: var(--font-nt-sans);
+  color: #000; /* fallback */
+  color: var(--black);
+  ...
+}
+```
+
+2. REM and EM
+
+Both are widely [supported in al browsers](https://caniuse.com/#search=rem), except for really old browser versions, like Internet Explorer 7 and below
+
+```CSS 
+header {
+  padding: 96px 16px; /* fallback */
+  padding: 6em 1em;
+}
+```
+
+3. Calc()
+
+Supported in all modern browsers. [Bad support or partial support](https://caniuse.com/#search=calc) for older versions.
+
+
+```CSS 
+h1 {
+  font-size: 28px; /* fallback */
+  font-size: calc(28px + (70 - 28) * ((100vw - 300px) / (1600 - 300)));
+}
+```
+
+4. Gradients
+
+Really [bad support in Safari](https://caniuse.com/#search=css%20gradient), and iOS Safari. 
+
+```CSS
+div {
+  background: #e5e5e5; /* fallback */
+  background: radial-gradient(ellipse at center, #e5e5e5 39%, #cacaca 100%);
+}
+```
+
+5. Others
+
+There are more like: CSS Zoom, Transform, transitions etc. I use them, but they don't require a fallback. They are only there for more pleasure, not as necessity.
+
+#### HTML
+Just one that really stands out and is worth mentioning. If the audio tag is not supported, we show the embed tag! You're welcome, Internet Explorer 5.
+
+```HTML
+<audio src="./sounds/ahh.wav" type="audio/wav" controls>
+  <embed src='./sounds/ahh.wav' autostart='false' loop='false' width='300' height='100'>
+</audio>
+```
+
+#### JavaScript
+
+1. ES6
+
+Most of the JavaScript code I write is based on ES6, for example: arrow functions and variables written with const and let instead of var. Luckily, we have babel that can convert this code. Ofcourse, we check the converted code and clean up.
+
+```JavaScript
+/* Before */
+const data = () => { ... } 
+/* After */
+function appendData() { ... }
+```
+
+2. Remove()
+
+Remove() isn't [supported in older versions of modern browsers](https://developer.mozilla.org/en-US/docs/Web/API/ChildNode/remove) and not at all in Internet Explorer. Because of this, in Internet Explorer the variant that works without JavaScript is always shown.
+
+However, there is a [bulletproof way to remove elements](https://dzone.com/articles/removing-element-plain). Score!
+
+```JavaScript
+/* before */
+div.remove()
+/* after */
+div.parentNode.removeChild(div)
+```
+> * 📖 [DZONE: JavaScript remove() method](https://blockmetry.com/blog/javascript-disabled)
+
+3. forEach() on NodeList
+Internet Explorer doesn't support a regular forEach on a NodeList (neither do old versions of modern browsers), lets say querySelectorAll. Which means my entire site breaks on IE 9, 10 and 11 and older browsers. We have to fix that.
+I found a solution on [Stack Overflow](https://stackoverflow.com/questions/13433799/why-doesnt-nodelist-have-foreach).
+
+```JavaScript
+const keyDivs = document.querySelectorAll('.key')
+/* before */
+keyDivs.forEach(key => {
+  key.addEventListener('click', playClickedSound)
+  key.addEventListener('transitionend', removeClass)
+})
+/* after */
+Array.prototype.forEach.call(keyDivs, (key) => {
+  key.addEventListener('click', playClickedSound)
+  key.addEventListener('transitionend', removeClass)
+})
+```
+
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
 ## Checklist
 - [x] Filled
@@ -232,6 +353,13 @@ That's more like it. You can now create your beat (live!) by pressing on buttons
 <!-- Maybe I used some awesome sources that I can mention 🤔-->
 ## Sources
 Underneath you will find all the sources that were previously mentioned throughout the document and some others which were helpful.
+
+> * 🛠 [Contrast Ratio](https://contrast-ratio.com/#%23cf4436-on-white)
+
+> * 📖 [Feature Detection](https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Cross_browser_testing/Feature_detection)
+> * 📖 [WikiHow: Disable JavaScript](https://www.wikihow.com/Disable-JavaScript)
+> * 📖 [Blockmetry: JavaScript Disabled](https://blockmetry.com/blog/javascript-disabled)
+> * 📖 [DZONE: JavaScript remove() method](https://blockmetry.com/blog/javascript-disabled)
 
 <!-- How about a license here? 📜 (or is it a licence?) 🤷 -->
 ## License 
