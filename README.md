@@ -74,7 +74,7 @@ Some resources possess an emoticon to help you understand which type of content 
     - [HTML](#html)
     - [CSS](#css)
     - [JavaScript](#javascript)
-  - [Audits]
+  - [Audits](#audits)
 - [Wishlist](#withlist)
 - [Sources](#sources)
 - [License](#license)
