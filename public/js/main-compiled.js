@@ -24,7 +24,7 @@ function appendData() {
   var keys = ['Q', 'W', 'E', 'R', 'A', 'S', 'D', 'F', 'Z', 'X', 'C', 'V'];
   var keyCodes = [81, 87, 69, 82, 65, 83, 68, 70, 90, 88, 67, 86];
   var soundNames = ['Ahh', 'Boom', 'Breath', 'Buff', 'Clap', 'Click', 'Crack', 'Hat', 'Hiss', 'Kick', 'Pop', 'Snare'];
-  var soundFiles = ['ahh.wav', 'boom.wav', 'breath.wav', 'buff.wav', 'clap.wav', 'click.wav', 'crack.wav', 'hat.wav', 'hiss.wav', 'kick.wav', 'pop.wav', 'snare.wav'];
+  var soundFiles = ['ahh.mp3', 'boom.mp3', 'breath.mp3', 'buff.mp3', 'clap.mp3', 'click.mp3', 'crack.mp3', 'hat.mp3', 'hiss.mp3', 'kick.mp3', 'pop.mp3', 'snare.mp3']
 
   for (var i in keys) {
     var keyElement = document.createElement('button');
