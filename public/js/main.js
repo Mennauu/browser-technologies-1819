@@ -25,7 +25,7 @@ const appendData = () => {
   const keys = ['Q', 'W', 'E', 'R', 'A', 'S', 'D', 'F', 'Z', 'X', 'C', 'V']
   const keyCodes = [81, 87, 69, 82, 65, 83, 68, 70, 90, 88, 67, 86]
   const soundNames = ['Ahh', 'Boom', 'Breath', 'Buff', 'Clap', 'Click', 'Crack', 'Hat', 'Hiss', 'Kick', 'Pop', 'Snare']
-  const soundFiles = ['ahh.wav', 'boom.wav', 'breath.wav', 'buff.wav', 'clap.wav', 'click.wav', 'crack.wav', 'hat.wav', 'hiss.wav', 'kick.wav', 'pop.wav', 'snare.wav']
+  const soundFiles = ['ahh.mp3', 'boom.mp3', 'breath.mp3', 'buff.mp3', 'clap.mp3', 'click.mp3', 'crack.mp3', 'hat.mp3', 'hiss.mp3', 'kick.mp3', 'pop.mp3', 'snare.mp3']
 
   for (let i in keys) {
     const keyElement = document.createElement('button')
