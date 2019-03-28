@@ -346,7 +346,7 @@ keyDivs.forEach(key => {
   key.addEventListener('transitionend', removeClass)
 })
 /* after */
-Array.prototype.forEach.call(keyDivs, (key) => {
+Array.prototype.forEach.call(keyDivs, function(key) {
   key.addEventListener('click', playClickedSound)
   key.addEventListener('transitionend', removeClass)
 })
@@ -359,15 +359,13 @@ This one is huge, because without it the core functionality could break (audio w
 I found this solution from David Wals: [Detect supported audio formats](https://davidwalsh.name/detect-supported-audio-formats-javascript)
 
 ```javascript
-if(supportsVideoType('wav') === "probably") { ... } // Usage
+if(supportsAudioType() === "maybe") { ... } // Usage
 
-function supportsAudioType(type) {
-  let audio
-  const formats = { mp3: 'audio/mp3', wav: 'audio/wav' }
+function supportsAudioType() {
+  var audio;
 
-  if (!audio) audio = document.createElement('audio')
-
-  return audio.canPlayType(formats[type] || type)
+  if (!audio) audio = document.createElement('audio');
+  return audio.canPlayType('audio/wav');
 }
 ```
 
@@ -399,7 +397,7 @@ Now the Audit also gives 100% on accessibility!
 <!-- Maybe a checklist of done stuff and stuff still on your wishlist? ✅ -->
 ## Wishlist
 - [ ] Rewrite fallback code for looping audio files
-- [ ] Rewrite code so the pleasureable functionality also works in Internet Explorer 9+
+- [ ] Rewrite code so the pleasureable functionality also works older browsers
 
 <!-- Maybe I used some awesome sources that I can mention 🤔-->
 ## Sources

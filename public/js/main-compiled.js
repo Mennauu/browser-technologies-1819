@@ -1,6 +1,6 @@
 "use strict";
 
-if (supportsVideoType('wav') === "probably") {
+if (supportsAudioType() === "maybe") {
   document.addEventListener('DOMContentLoaded', function () {
     var noJS = document.querySelector('.no-js');
     var withJS = document.querySelector('.with-js');
@@ -109,12 +109,9 @@ function removeClass() {
   this.classList.remove('active-key');
 }
 
-function supportsAudioType(type) {
+function supportsAudioType() {
   var audio;
-  var formats = {
-    mp3: 'audio/mp3',
-    wav: 'audio/wav'
-  };
+
   if (!audio) audio = document.createElement('audio');
-  return audio.canPlayType(formats[type] || type);
+  return audio.canPlayType('audio/wav');
 }
